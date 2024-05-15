@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="extra.css">
+</head>
+<body onload="initClock()">
+    
+    <div class="container">
+        <div class="container-1">
+            <div class="profile-img">
+                <img src="b65f72d6d11a48c1bc560059cc36e31f.webp" alt="">
+            </div>
+            <h2 class="name">MD Sahazeb</h2>
+            <p>Fornt-End developer</p>
+        </div>
+        <div class="container-2">
+            <h2 class="launch"><span class="col"><span class="lor">L</span>auncehing</span> Soon</h2>
+             <div class="datetime">
+                <div class="date">
+                    <span id="dayname">Day</span>,
+                    <span id="month">Month</span>
+                    <span id="daynum">00</span>,
+                    <span id="year">Year</span>
+                </div>
+                <div class="time">
+                    <span id="hour">00</span>:
+                    <span id="minutes">00</span>:
+                    <span id="seconds">00</span>
+                    <span id="period">AM</span>
+                </div>
+            </div>
+            <!-- <div class="launch-time">
+                <div>
+                    <p id="days">00</p>
+                    <span>Days</span>
+                </div>
+                <div>
+                    <p id="hours">00</p>
+                    <span>Hours</span>
+                </div>
+                <div>
+                    <p id="minutes">00</p>
+                    <span>Minutes</span>
+                </div>
+                <div>
+                    <p id="seconds">00</p>
+                    <span>Seconds</span>
+                </div>
+            </div> -->
+
+        </div>
+    </div>
+    <section class="bubble-holder"> 
+        <div class="bubble-1 bubble-container bubble-animation-x">
+          <div class="bubble-large bubble-animation-y"></div>
+        </div>
+      
+        <div class="bubble-2 bubble-container bubble-animation-x">
+          <div class="bubble-large bubble-animation-y"></div>
+        </div>
+      
+        <div class="bubble-3 bubble-container bubble-animation-x">
+          <div class="bubble-large bubble-animation-y"></div>
+        </div>
+        
+        <div class="bubble-4 bubble-container bubble-animation-x">
+          <div class="bubble-small bubble-animation-y"></div>
+        </div>
+        
+         <div class="bubble-5 bubble-container bubble-animation-x">
+          <div class="bubble-small bubble-animation-y"></div>
+        </div>
+        
+         <div class="bubble-6 bubble-container bubble-animation-x">
+          <div class="bubble-small bubble-animation-y"></div>
+        </div>
+        
+        <div class="bubble-7 bubble-container bubble-animation-x">
+          <div class="bubble-small bubble-animation-y"></div>
+        </div>
+        
+        <div class="bubble-8 bubble-container bubble-animation-x">
+          <div class="bubble-small bubble-animation-y"></div>
+        </div>
+        
+         <div class="bubble-9 bubble-static"></div>  
+         <div class="bubble-10 bubble-static"></div>
+    </section>
+
+
+
+    <!-- <script>
+        let countDownDate = new date("jun 15, 2024 00:00:00").getTime();
+    let x = setInterval(function(){
+    let now = new Date().getTime();
+    let distance = countDownDate - now;
+
+    let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes  = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("days").innerHTML = days;
+    document.getElementById("hours").innerHTML = hours;
+    document.getElementById("mintues").innerHTML = minutes;
+    document.getElementById("seconds").innerHTML = seconds;
+
+    },1000);
+
+    </script> -->
+
+    <script>
+                function updateClock(){
+            let now = new Date();
+            let dname = now.getDay(),
+            mo = now.getMonth(),
+            dnum = now.getDate(),
+            year = now.getFullYear(),
+            hou = now.getHours(),
+            min = now.getMinutes(),
+            sec = now.getSeconds(),
+            pe = "AM";
+
+            if(hou == 0){
+                hou= 12;
+            }
+            if(hou > 12){
+                hou = hou - 12;
+                pe = "PM"
+            }
+
+            Number.prototype.pad = function(digits){
+                for(var n = this.toString(); n.length < digits; n = 0 + n);
+                return n;
+            }
+
+            let month = ["January", "February", "March", "April", "May", "June", "July", "Augeat", "September", "October", "November", "December"];
+            let week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            let ids = ["dayname", "month", "daynum", "year", "hour", "minutes", "seconds", "period"]
+            let values = [week[dname], month[mo], dnum.pad(2), year, hou.pad(2), min.pad(2), sec.pad(2), pe]
+            for(var i = 0; i < ids.length; i++)
+            document.getElementById(ids[i]).firstChild.nodeValue = values[i];
+        }
+
+        function initClock(){
+            updateClock();
+            window.setInterval("updateClock()", 1)
+        }
+    </script>
+</body>
+</html>
